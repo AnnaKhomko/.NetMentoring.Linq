@@ -8,3 +8,13 @@ C:\Users\eugen\Desktop\Task\Task\Task\obj\Debug\Task.csproj.GenerateResource.cac
 C:\Users\eugen\Desktop\Task\Task\Task\obj\Debug\Task.csproj.CoreCompileInputs.cache
 C:\Users\eugen\Desktop\Task\Task\Task\obj\Debug\Task.exe
 C:\Users\eugen\Desktop\Task\Task\Task\obj\Debug\Task.pdb
+C:\Users\Hanna_Khomka\Downloads\NetMentoring.Linq-master\.NetMentoring.Linq-master\Task\Task\bin\Debug\Task.exe.config
+C:\Users\Hanna_Khomka\Downloads\NetMentoring.Linq-master\.NetMentoring.Linq-master\Task\Task\bin\Debug\Task.exe
+C:\Users\Hanna_Khomka\Downloads\NetMentoring.Linq-master\.NetMentoring.Linq-master\Task\Task\bin\Debug\Task.pdb
+C:\Users\Hanna_Khomka\Downloads\NetMentoring.Linq-master\.NetMentoring.Linq-master\Task\Task\obj\Debug\Task.csprojAssemblyReference.cache
+C:\Users\Hanna_Khomka\Downloads\NetMentoring.Linq-master\.NetMentoring.Linq-master\Task\Task\obj\Debug\Task.Properties.Resources.resources
+C:\Users\Hanna_Khomka\Downloads\NetMentoring.Linq-master\.NetMentoring.Linq-master\Task\Task\obj\Debug\SampleSupport.SampleForm.resources
+C:\Users\Hanna_Khomka\Downloads\NetMentoring.Linq-master\.NetMentoring.Linq-master\Task\Task\obj\Debug\Task.csproj.GenerateResource.cache
+C:\Users\Hanna_Khomka\Downloads\NetMentoring.Linq-master\.NetMentoring.Linq-master\Task\Task\obj\Debug\Task.csproj.CoreCompileInputs.cache
+C:\Users\Hanna_Khomka\Downloads\NetMentoring.Linq-master\.NetMentoring.Linq-master\Task\Task\obj\Debug\Task.exe
+C:\Users\Hanna_Khomka\Downloads\NetMentoring.Linq-master\.NetMentoring.Linq-master\Task\Task\obj\Debug\Task.pdb

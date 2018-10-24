@@ -69,7 +69,7 @@ namespace SampleQueries
             int x = 5000;
 
             var customers = dataSource.Customers
-                .Where(c => c.Orders.Select(o => o.Total).Sum() > x)
+                .Where(c => c.Orders.Sum(o => o.Total) > x)
                 .Select(c => new
                 {
                     customerId = c.CustomerID,
@@ -83,6 +83,7 @@ namespace SampleQueries
             }
 
             x = 100000;
+
             ObjectDumper.Write($"list of customers with the total orders sum greater than {x}");
             foreach (var customer in customers)
             {
@@ -169,12 +170,12 @@ namespace SampleQueries
         public void Linq005()
         {
             var customers = dataSource.Customers
-                .Where(x => x.Orders.Count() > 0)
+                .Where(x => x.Orders.Any())
                 .Select(c => new
                 {
                     customerId = c.CustomerID,
                     orderDate = c.Orders.Select(o => o.OrderDate).First(),
-                    totalOrderSum = c.Orders.Select(o => o.Total).Sum()
+                    totalOrderSum = c.Orders.Sum(o => o.Total)
                 })
                 .OrderBy(c => c.orderDate.Year)
                 .ThenBy(c => c.orderDate.Month)
@@ -195,8 +196,8 @@ namespace SampleQueries
         {
             var customers = dataSource.Customers
                 .Where(c => !long.TryParse(c.PostalCode, out long result)
-                                      || string.IsNullOrEmpty(c.Region)
-                                      || !c.Phone.First().Equals('('));
+                                      || string.IsNullOrWhiteSpace(c.Region)
+                                      || !c.Phone.StartsWith("("));
 
             ObjectDumper.Write($"list of customers with nondigital postalcode or with empty region or without code operator.");
             foreach (var customer in customers)
@@ -265,13 +266,13 @@ namespace SampleQueries
         public void Linq009()
         {
             var products = dataSource.Customers
-                .Where(c => c.Orders.Count() > 0)
+                .Where(c => c.Orders.Any())
                 .GroupBy(c => c.City)
                 .Select(x => new
                 {
                     city = x.Key,
-                    averageIncome = x.Select(o => o.Orders.Select(p => p.Total).Average()).Average(),
-                    averageIntensity = x.Select(o => o.Orders.Count()).Average()
+                    averageIncome = x.Average(o => o.Orders.Average(p => p.Total)),
+                    averageIntensity = x.Average((o => o.Orders.Count()))
                 });
 
             ObjectDumper.Write($"list of products grouped by category then by available in stock and ordered by price.");
@@ -288,7 +289,7 @@ namespace SampleQueries
         public void Linq010()
         {
             var statistics = dataSource.Customers
-                .Where(c => c.Orders.Count() > 0)
+                .Where(c => c.Orders.Any())
                 .Select(c => new
                 {
                     c.CustomerID,
@@ -304,8 +305,8 @@ namespace SampleQueries
                     }),
                     GroupByMonthAndYear = c.Orders.GroupBy(x => new { x.OrderDate.Month, x.OrderDate.Year }).Select(g => new
                     {
-                        month = g.Key.Month,
-                        year = g.Key.Year,
+                        g.Key.Month,
+                        g.Key.Year,
                         activity = g.Count()
                     })
                 });
@@ -326,7 +327,7 @@ namespace SampleQueries
                 ObjectDumper.Write($"statistic of client activity by Month and year.");
                 foreach (var monthYear in stat.GroupByMonthAndYear)
                 {
-                    ObjectDumper.Write($"Year: {monthYear.year}, month: {monthYear.month} count of orders {monthYear.activity}");
+                    ObjectDumper.Write($"Year: {monthYear.Year}, month: {monthYear.Month} count of orders {monthYear.activity}");
                 }
             }
         }
